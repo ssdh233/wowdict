@@ -1,0 +1,83 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+  <Frame name="DictFrame" parent="UIParent" inherits="BasicFrameTemplateWithInset" hidden="true">
+    <Size>
+      <AbsDimension x="400" y="400"/>
+    </Size>
+    <Anchors>
+      <Anchor point="BOTTOMRIGHT">
+        <Offset>
+          <AbsDimension x="-100" y="120" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Layers>
+      <Layer>
+        <FontString name="DictFrameWord" inherits="GameFontNormal">
+          <Size>
+            <AbsDimension x="260" y="0"/>
+          </Size>
+          <Anchors>
+            <Anchor point="TOP">
+              <Offset>
+                <AbsDimension x="0" y="-6" />
+              </Offset>
+            </Anchor>
+          </Anchors>
+        </FontString>
+      </Layer>
+    </Layers>
+    <Frames>
+      <ScrollFrame name="DictScrollFrame" inherits="UIPanelScrollFrameTemplate">
+        <Size>
+          <AbsDimension x="360" y="360"/>
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="DictFrame">
+            <Offset>
+              <AbsDimension x="0" y="-30" />
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <ScrollChild>
+          <Frame name="DictScrollChildFrame">
+            <Size>
+              <AbsDimension x="340" y="400"/>
+            </Size>
+            <Layers>
+              <Layer>
+                <FontString name="DictFramePronounciationEN" inherits="MyFontPron" justifyH="LEFT">
+                  <Size>
+                    <AbsDimension x="320" y="0"/>
+                  </Size>
+                  <Anchors>
+                    <Anchor point="TOPLEFT">
+                      <Offset>
+                        <AbsDimension x="20" y="-10" />
+                      </Offset>
+                    </Anchor>
+                  </Anchors>
+                </FontString>
+                <FontString name="DictFrameDefinitionEN" inherits="GameFontNormal" justifyH="LEFT">
+                  <Size>
+                    <AbsDimension x="320" y="0"/>
+                  </Size>
+                </FontString>
+                <FontString name="DictFramePronounciationCN" inherits="MyFontPron" justifyH="LEFT">
+                  <Size>
+                    <AbsDimension x="320" y="0"/>
+                  </Size>
+                </FontString>
+                <FontString name="DictFrameDefinitionCN" inherits="MyFontNormal" justifyH="LEFT">
+                  <Size>
+                    <AbsDimension x="320" y="0"/>
+                  </Size>
+                </FontString>
+              </Layer>
+            </Layers>
+          </Frame>
+        </ScrollChild>
+      </ScrollFrame>
+    </Frames>
+  </Frame>
+</Ui>

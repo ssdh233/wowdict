@@ -1,0 +1,111 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+  <Button name="FriendsFrameWhoButtonTemplate123" virtual="true">
+    <Size>
+      <AbsDimension x="298" y="16"/>
+    </Size>
+    <Layers>
+      <Layer level="BORDER">
+        <FontString name="$parentName" inherits="GameFontNormalSmall" justifyH="LEFT" text="123456">
+          <Size>
+            <AbsDimension x="88" y="14"/>
+          </Size>
+          <Anchors>
+            <Anchor point="TOPLEFT">
+              <Offset>
+                <AbsDimension x="10" y="-3"/>
+              </Offset>
+            </Anchor>
+          </Anchors>
+        </FontString>
+        <FontString name="$parentVariable" inherits="GameFontHighlightSmall" justifyH="LEFT">
+          <Size>
+            <AbsDimension x="95" y="14"/>
+          </Size>
+          <Anchors>
+            <Anchor point="LEFT" relativeTo="$parentName" relativePoint="RIGHT">
+              <Offset>
+                <AbsDimension x="0" y="0"/>
+              </Offset>
+            </Anchor>
+          </Anchors>
+        </FontString>
+        <FontString name="$parentLevel" inherits="GameFontHighlightSmall" justifyH="CENTER">
+          <Size>
+            <AbsDimension x="20" y="14"/>
+          </Size>
+          <Anchors>
+            <Anchor point="LEFT" relativeTo="$parentVariable" relativePoint="RIGHT">
+              <Offset>
+                <AbsDimension x="2" y="0"/>
+              </Offset>
+            </Anchor>
+          </Anchors>
+        </FontString>
+        <FontString name="$parentClass" inherits="GameFontHighlightSmall" justifyH="LEFT">
+          <Size>
+            <AbsDimension x="100" y="8"/>
+          </Size>
+          <Anchors>
+            <Anchor point="LEFT" relativeTo="$parentLevel" relativePoint="RIGHT">
+              <Offset>
+                <AbsDimension x="12" y="0"/>
+              </Offset>
+            </Anchor>
+          </Anchors>
+        </FontString>
+      </Layer>
+    </Layers>
+    <HighlightTexture file="Interface\QuestFrame\UI-QuestTitleHighlight" alphaMode="ADD">
+      <Size>
+        <AbsDimension x="298" y="16"/>
+      </Size>
+      <Anchors>
+        <Anchor point="TOP">
+          <Offset>
+            <AbsDimension x="5" y="-2"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+    </HighlightTexture>
+  </Button>
+  <ScrollFrame name="DictLogFrame" parent="UIParent" inherits="FauxScrollFrameTemplate" hidden="true">
+    <Size>
+      <AbsDimension x="300" y="360"/>
+    </Size>
+    <Anchors>
+      <Anchor point="CENTER" />
+    </Anchors>
+    <Layers>
+      <Layer>
+        <Button name="DictLogButton" inherits="FriendsFrameWhoButtonTemplate123">
+          <Anchors>
+            <Anchor point="TOPLEFT" relativeTo="DictLogFrame">
+              <Offset>
+                <AbsDimension x="0" y="0"/>
+              </Offset>
+            </Anchor>
+          </Anchors>
+        </Button>
+      </Layer>
+    </Layers>
+  </ScrollFrame>
+  <!-- <Button name="DictLogButton1" inherits="FriendsFrameWhoButtonTemplate123">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="DictLogFrame">
+        <Offset>
+          <AbsDimension x="0" y="0"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+  </Button>
+  <Button name="DictLogButton2" inherits="FriendsFrameWhoButtonTemplate123">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="DictLogButton1" relativePoint="BOTTOMLEFT">
+        <Offset>
+          <AbsDimension x="0" y="0"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+  </Button> -->
+</Ui>

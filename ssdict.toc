@@ -1,0 +1,12 @@
+## Interface: 11403
+## Title: ssdict
+## Notes: dictonary addon
+## SavedVariables: DictLog
+
+MyFont.xml
+DictFrame.xml
+main.lua
+dict.en1.lua
+dict.en2.lua
+dict.cn1.lua
+dict.cn2.lua

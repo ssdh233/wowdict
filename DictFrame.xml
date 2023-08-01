@@ -2,20 +2,16 @@
 ..\FrameXML\UI.xsd">
   <Frame name="DictFrame" parent="UIParent" inherits="BasicFrameTemplateWithInset" hidden="true">
     <Size>
-      <AbsDimension x="400" y="400"/>
+      <AbsDimension x="600" y="428"/>
     </Size>
     <Anchors>
-      <Anchor point="BOTTOMRIGHT">
-        <Offset>
-          <AbsDimension x="-100" y="120" />
-        </Offset>
-      </Anchor>
+      <Anchor point="CENTER" />
     </Anchors>
     <Layers>
       <Layer>
         <FontString name="DictFrameWord" inherits="GameFontNormal">
           <Size>
-            <AbsDimension x="260" y="0"/>
+            <AbsDimension x="460" y="0"/>
           </Size>
           <Anchors>
             <Anchor point="TOP">
@@ -30,7 +26,7 @@
     <Frames>
       <ScrollFrame name="DictScrollFrame" inherits="UIPanelScrollFrameTemplate">
         <Size>
-          <AbsDimension x="360" y="360"/>
+          <AbsDimension x="560" y="388"/>
         </Size>
         <Anchors>
           <Anchor point="TOPLEFT" relativeTo="DictFrame">
@@ -42,13 +38,13 @@
         <ScrollChild>
           <Frame name="DictScrollChildFrame">
             <Size>
-              <AbsDimension x="340" y="400"/>
+              <AbsDimension x="540" y="428"/>
             </Size>
             <Layers>
               <Layer>
                 <FontString name="DictFramePronounciationEN" inherits="MyFontPron" justifyH="LEFT">
                   <Size>
-                    <AbsDimension x="320" y="0"/>
+                    <AbsDimension x="520" y="0"/>
                   </Size>
                   <Anchors>
                     <Anchor point="TOPLEFT">
@@ -60,17 +56,17 @@
                 </FontString>
                 <FontString name="DictFrameDefinitionEN" inherits="GameFontNormal" justifyH="LEFT">
                   <Size>
-                    <AbsDimension x="320" y="0"/>
+                    <AbsDimension x="520" y="0"/>
                   </Size>
                 </FontString>
                 <FontString name="DictFramePronounciationCN" inherits="MyFontPron" justifyH="LEFT">
                   <Size>
-                    <AbsDimension x="320" y="0"/>
+                    <AbsDimension x="520" y="0"/>
                   </Size>
                 </FontString>
                 <FontString name="DictFrameDefinitionCN" inherits="MyFontNormal" justifyH="LEFT">
                   <Size>
-                    <AbsDimension x="320" y="0"/>
+                    <AbsDimension x="520" y="0"/>
                   </Size>
                 </FontString>
               </Layer>

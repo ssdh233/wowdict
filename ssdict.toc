@@ -5,7 +5,9 @@
 
 MyFont.xml
 DictFrame.xml
-main.lua
+DictLogFrame.lua
+DictLogFrame.xml
+DictFrame.lua
 dict.en1.lua
 dict.en2.lua
 dict.cn1.lua

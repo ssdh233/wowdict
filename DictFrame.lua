@@ -1,15 +1,17 @@
 -- close frame by esc
 tinsert(UISpecialFrames, DictFrame:GetName())
+tinsert(UISpecialFrames, DictLogFrame:GetName())
 
-SLASH_LOOKUP1 = "/d"
-SLASH_LOOKUP2 = "/dict"
-SlashCmdList["LOOKUP"] = function(msg)
+function LookUp(msg, shouldLog)
   if (DictLog == nil) then
     DictLog = {}
   end
 
   if ( DictSourceEN1[msg] or DictSourceEN2[msg] or DictSourceCN1[msg] or DictSourceCN2[msg] ) then
-    table.insert(DictLog, msg)
+    if shouldLog then 
+      AddToDictLog(msg)
+    end
+
     DictScrollFrame:SetVerticalScroll(0);
     DictFrameWord:SetText(msg);
 
@@ -46,6 +48,39 @@ SlashCmdList["LOOKUP"] = function(msg)
     local cnPronHeight = DictFramePronounciationCN:GetStringHeight()
     DictFrameDefinitionCN:SetPoint("TOPLEFT", 20, -(enPronHeight + 20 + enDefHeight + 100 + cnPronHeight + 20))
   end
-  -- print("Log:")
-  -- print(table.concat(DictLog,", "))
+end
+
+SLASH_LOOKUP1 = "/d"
+SLASH_LOOKUP2 = "/dict"
+SlashCmdList["LOOKUP"] = function(msg)
+  LookUp(msg, true)
 end 
+
+function AddToDictLog(msg)
+  local currentDate = date("%Y%m%d%H%M%S")
+  local currentLog = nil;
+  for k, v in ipairs(DictLog) do
+    if (v and v[1] == msg) then
+      currentLog = v;
+      DictLog[k] = false;
+      break
+    end
+  end
+  if currentLog then
+    table.insert(DictLog, { msg, currentLog[2] + 1, currentDate })
+  else
+    table.insert(DictLog, { msg, 1, currentDate })
+  end
+end
+
+-- SLASH_DICTEXPORT1 = "/dictexport"
+-- SlashCmdList["DICTEXPORT"] = function(msg)
+--   print("Log:")
+--   -- print(table.concat(DictLog,", "))
+--   ShowUIPanel(DictExportFrame)
+
+--   -- DictExportEditBox:SetText(table.concat(DictLog,", "))
+--   DictExportEditBox:HighlightText()
+
+--   print("DictExportEditBox:", DictExportEditBox)
+-- end

@@ -1,4 +1,5 @@
-dict.*.lua
+dict.cn1.*.lua
+dict.en.*.lua
 node_modules
 **/_shared/*
 !**/_shared/description

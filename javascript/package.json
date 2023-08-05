@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "csv": "^6.3.1",
     "fast-xml-parser": "^4.2.6"
   }
 }

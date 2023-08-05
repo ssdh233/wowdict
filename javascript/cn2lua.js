@@ -1,8 +1,7 @@
 const fs = require("fs");
 const { XMLParser } = require("fast-xml-parser");
 
-// const dictJson = fs.readFileSync("./_share/en_cn_source.dict.sample.json").toString();
-const dictJson = fs.readFileSync("./_share/en_cn_source.dict.json").toString();
+const dictJson = fs.readFileSync("./_shared/en_cn_source.dict.json").toString();
 const dictData = JSON.parse(dictJson);
 
 const parser = new XMLParser({
@@ -11,41 +10,25 @@ const parser = new XMLParser({
     trimValues: false
 });
 
-const middleNumber = 50000;
 
-let output1 = "DictSourceCN1={";
-for (let i = 0; i < middleNumber; i++) {
-    if (i % 1000 === 0) console.log(`Processing ${i} items...`);
+const CHUNK_SIZE = 50000;
 
-    const { word, definition } = dictData[i];
-    const obj = parser.parse(definition);
-    const result = extract(obj);
-    const { def, pron } = result;
-    output1 += `["${word}"]={["pron"]=[[ ${pron.replaceAll("\n", " ")} ]],["def"]=[[ ${def.replace("\n", "").replaceAll("▸", "-").replaceAll("‹", "<").replaceAll("›", ">").trim()} ]]},`
+for (let i = 0; i * CHUNK_SIZE < dictData.length; i++) {
+   let output = `DictSourceCN1_part${i}={`;
+   for (let j = i * CHUNK_SIZE; j < Math.min((i + 1) * CHUNK_SIZE, dictData.length); j++) {
+      if (j % 1000 === 0) console.log(`Processing ${j} items...`);
+
+      const { word, definition } = dictData[j];
+      const obj = parser.parse(definition);
+      const result = extract(obj);
+      const { def, pron } = result;
+      output += `["${word}"]={["pron"]=[[ ${pron.replaceAll("\n", " ")} ]],["def"]=[[ ${def.replace("\n", "").replaceAll("▸", "-").replaceAll("‹", "<").replaceAll("›", ">").trim()} ]]},`
+    }
+
+   output += `};\ntable.insert(DictSourceCN1, DictSourceCN1_part${i});\n`;
+
+   fs.writeFileSync(`../dict.cn1.part${i}.lua`, output);
 }
-
-output1 += "}";
-
-
-// fs.writeFileSync("./_share/dict.cn.sample.lua", output);
-fs.writeFileSync("./_share/dict.cn1.lua", output1);
-
-
-let output2 = "DictSourceCN2={";
-for (let i = middleNumber; i < dictData.length; i++) {
-    if (i % 1000 === 0) console.log(`Processing ${i} items...`);
-
-    const { word, definition } = dictData[i];
-    const obj = parser.parse(definition);
-    const result = extract(obj);
-    const { def, pron } = result;
-    output2 += `["${word}"]={["pron"]=[[ ${pron.replaceAll("\n", " ")} ]],["def"]=[[ ${def.replace("\n", "").replaceAll("▸", "-").replaceAll("‹", "<").replaceAll("›", ">").trim()} ]]},`
-}
-
-output2 += "}";
-
-// fs.writeFileSync("./_share/dict.cn.sample.lua", output);
-fs.writeFileSync("./_share/dict.cn2.lua", output2);
 
 function extract(node, options = {}) {
     let def = "";

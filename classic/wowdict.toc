@@ -1,10 +1,10 @@
-## Interface: 100105
-## Title: ssdict
+## Interface: 11403
+## Title: wowdict
 ## Notes: dictonary addon
 ## SavedVariables: DictLog
 ## SavedVariables: DictFrame_LastSelectedTab
 
-MyFont.xml
+WoWDictFont.xml
 DictFrame.xml
 DictLogFrame.lua
 DictLogFrame.xml

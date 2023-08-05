@@ -1,6 +1,6 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
 ..\FrameXML\UI.xsd">
-  <FontFamily name="SsdictFont_Small" virtual="true">
+  <FontFamily name="WoWDictFont_Small" virtual="true">
     <Member alphabet="roman">
       <Font font="Fonts\FRIZQT__.TTF" height="10">
         <Shadow x="1" y="-1">
@@ -37,27 +37,27 @@
       </Font>
     </Member>
   </FontFamily>
-  <Font name="SsdictFontSmall" inherits="SsdictFont_Small" virtual="true">
+  <Font name="WowDictFontSmall" inherits="WowDictFont_Small" virtual="true">
     <Color r="1.0" g="0.82" b="0"/>
   </Font>
-  <FontFamily name="SsdictFont_Pron" virtual="true">
+  <FontFamily name="WowDictFont_Pron" virtual="true">
     <Member alphabet="roman">
-      <Font font="Interface\AddOns\ssdict\fonts\phonetic.ttf" height="10"/>
+      <Font font="Interface\AddOns\wowdict\fonts\phonetic.ttf" height="10"/>
     </Member>
     <Member alphabet="korean">
-      <Font font="Interface\AddOns\ssdict\fonts\phonetic.ttf" height="10"/>
+      <Font font="Interface\AddOns\wowdict\fonts\phonetic.ttf" height="10"/>
     </Member>
     <Member alphabet="simplifiedchinese">
-      <Font font="Interface\AddOns\ssdict\fonts\phonetic.ttf" height="10"/>
+      <Font font="Interface\AddOns\wowdict\fonts\phonetic.ttf" height="10"/>
     </Member>
     <Member alphabet="traditionalchinese">
-      <Font font="Interface\AddOns\ssdict\fonts\phonetic.ttf" height="10"/>
+      <Font font="Interface\AddOns\wowdict\fonts\phonetic.ttf" height="10"/>
     </Member>
     <Member alphabet="russian">
-      <Font font="Interface\AddOns\ssdict\fonts\phonetic.ttf" height="10"/>
+      <Font font="Interface\AddOns\wowdict\fonts\phonetic.ttf" height="10"/>
     </Member>
   </FontFamily>
-  <Font name="SsdictFontPron" inherits="SsdictFont_Pron" virtual="true">
+  <Font name="WowDictFontPron" inherits="WowDictFont_Pron" virtual="true">
     <Color r="1.0" g="0.82" b="0"/>
   </Font>
 </Ui>

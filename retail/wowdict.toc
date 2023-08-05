@@ -13,14 +13,6 @@ DictFrame.lua
 
 dict.lua
 
-dict.en.part0.lua
-dict.en.part1.lua
-dict.en.part2.lua
-
-dict.cn1.part0.lua
-dict.cn1.part1.lua
-dict.cn1.part2.lua
-
 dict.ecdict.part0.lua
 dict.ecdict.part1.lua
 dict.ecdict.part2.lua

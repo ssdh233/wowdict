@@ -1,20 +1,8 @@
-DictSourceCN1={}
 DictSourceCN2={}
-DictSourceEN={}
 DictSourceJA={}
 
 DictSource = {
-  ["en"] = {
-    ["data"]=DictSourceEN,
-    ["noResultText"]="No result.",
-    ["source"]="source: New Oxford American Dictionary"
-  },
-  ["cn1"] = {
-    ["data"]=DictSourceCN1,
-    ["noResultText"]="没有找到结果。",
-    ["source"]="来源: 牛津英汉汉英词典"
-  },
-  ["cn2"] = {
+  ["cn"] = {
     ["data"]=DictSourceCN2,
     ["noResultText"]="没有找到结果。",
     ["source"]="来源: ECDICT"
@@ -26,4 +14,4 @@ DictSource = {
   }
 }
 
-DictKeys = {"cn1", "en", "cn2", "ja"}
+DictKeys = {"cn", "ja"}

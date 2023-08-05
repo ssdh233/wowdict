@@ -1,0 +1,334 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+  <Frame name="DictLogFrameTemplate" inherits="PortraitFrameTemplate" virtual="true">
+    <Layers>
+      <Layer level="BORDER" textureSubLevel="1">
+        <Texture name="$parentBtnCornerLeft" inherits="UI-Frame-BtnCornerLeft">
+          <Anchors>
+            <Anchor point="BOTTOMLEFT" x="-2" y="-1"/>
+          </Anchors>
+        </Texture>
+        <Texture name="$parentBtnCornerRight" inherits="UI-Frame-BtnCornerRight">
+          <Anchors>
+            <Anchor point="BOTTOMRIGHT" x="0" y="-1"/>
+          </Anchors>
+        </Texture>
+        <Texture name="$parentButtonBottomBorder" inherits="_UI-Frame-BtnBotTile">
+          <Anchors>
+            <Anchor point="BOTTOMLEFT" relativeTo="$parentBtnCornerLeft" relativePoint="BOTTOMRIGHT" y="3"/>
+            <Anchor point="BOTTOMRIGHT" relativeTo="$parentBtnCornerRight" relativePoint="BOTTOMLEFT"/>
+          </Anchors>
+        </Texture>
+      </Layer>
+    </Layers>
+    <Frames>
+      <Frame name="$parentInset" useParentLevel="true" inherits="InsetFrameTemplate" parentKey="Inset">
+        <Anchors>
+          <Anchor point="TOPLEFT" x="4" y="-76" />
+          <Anchor point="BOTTOMRIGHT" x="-6" y="26" />
+        </Anchors>
+      </Frame>
+    </Frames>
+  </Frame>
+  <Button name="DictLogButtonTemplate" virtual="true">
+    <Size>
+      <AbsDimension x="238" y="16"/>
+    </Size>
+    <Layers>
+      <Layer level="BORDER">
+        <FontString name="$parentName" inherits="GameFontNormalSmall" justifyH="LEFT">
+          <Size>
+            <AbsDimension x="124" y="14"/>
+          </Size>
+          <Anchors>
+            <Anchor point="TOPLEFT">
+              <Offset>
+                <AbsDimension x="10" y="-3"/>
+              </Offset>
+            </Anchor>
+          </Anchors>
+        </FontString>
+        <FontString name="$parentLevel" inherits="GameFontHighlightSmall" justifyH="CENTER">
+          <Size>
+            <AbsDimension x="34" y="14"/>
+          </Size>
+          <Anchors>
+            <Anchor point="LEFT" relativeTo="$parentName" relativePoint="RIGHT">
+              <Offset>
+                <AbsDimension x="2" y="0"/>
+              </Offset>
+            </Anchor>
+          </Anchors>
+        </FontString>
+        <FontString name="$parentClass" inherits="GameFontHighlightSmall" justifyH="LEFT">
+          <Size>
+            <AbsDimension x="60" y="8"/>
+          </Size>
+          <Anchors>
+            <Anchor point="LEFT" relativeTo="$parentLevel" relativePoint="RIGHT">
+              <Offset>
+                <AbsDimension x="12" y="0"/>
+              </Offset>
+            </Anchor>
+          </Anchors>
+        </FontString>
+      </Layer>
+    </Layers>
+    <HighlightTexture file="Interface\QuestFrame\UI-QuestTitleHighlight" alphaMode="ADD">
+      <Size>
+        <AbsDimension x="238" y="16"/>
+      </Size>
+      <Anchors>
+        <Anchor point="TOP">
+          <Offset>
+            <AbsDimension x="5" y="-2"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+    </HighlightTexture>
+  </Button>
+  <Button name="DictLogFrameHeader" virtual="true">
+    <Size x="10" y="20"/>
+    <Layers>
+      <Layer level="BACKGROUND">
+        <Texture parentKey="Left" name="$parentLeft" file="Interface\FriendsFrame\WhoFrame-ColumnTabs">
+          <Size x="5" y="20"/>
+          <Anchors>
+            <Anchor point="TOPLEFT"/>
+          </Anchors>
+          <TexCoords left="0" right="0.078125" top="0" bottom="0.75"/>
+        </Texture>
+        <Texture parentKey="Middle" name="$parentMiddle" file="Interface\FriendsFrame\WhoFrame-ColumnTabs">
+          <Size x="53" y="20"/>
+          <Anchors>
+            <Anchor point="LEFT" relativeKey="$parent.Left" relativePoint="RIGHT"/>
+          </Anchors>
+          <TexCoords left="0.078125" right="0.90625" top="0" bottom="0.75"/>
+        </Texture>
+        <Texture parentKey="Right" name="$parentRight" file="Interface\FriendsFrame\WhoFrame-ColumnTabs">
+          <Size x="4" y="20"/>
+          <Anchors>
+            <Anchor point="LEFT" relativeKey="$parent.Middle" relativePoint="RIGHT"/>
+          </Anchors>
+          <TexCoords left="0.90625" right="0.96875" top="0" bottom="0.75"/>
+        </Texture>
+      </Layer>
+    </Layers>
+    <ButtonText>
+      <Anchors>
+        <Anchor point="LEFT" x="8" y="0"/>
+      </Anchors>
+    </ButtonText>
+    <NormalFont style="GameFontHighlightSmall"/>
+    <HighlightTexture parentKey="HighlightTexture" name="$parentHighlightTexture" file="Interface\PaperDollInfoFrame\UI-Character-Tab-Highlight" alphaMode="ADD">
+      <Anchors>
+        <Anchor point="TOPLEFT" relativeKey="$parent.Left" x="-2" y="5"/>
+        <Anchor point="BOTTOMRIGHT" relativeKey="$parent.Right" x="2" y="-7"/>
+      </Anchors>
+    </HighlightTexture>
+  </Button>
+  <Frame name="DictLogFrame" parent="UIParent" inherits="DictLogFrameTemplate" hidden="true">
+    <Size>
+      <AbsDimension x="240" y="428"/>
+    </Size>
+    <Anchors>
+      <Anchor point="CENTER">
+        <Offset>
+          <AbsDimension x="420" y="0" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Layers>
+      <Layer level="OVERLAY" textureSubLevel="-1">
+        <Texture name="$parentIcon" file="Interface\Spellbook\Spellbook-Icon">
+          <Size x="60" y="60"/>
+          <Anchors>
+            <Anchor point="TOPLEFT" x="-5" y="7"/>
+          </Anchors>
+        </Texture>
+        <FontString name="DictLogFrameTitle" inherits="GameFontNormal" text="DictLog">
+          <Size>
+            <AbsDimension x="240" y="0"/>
+          </Size>
+          <Anchors>
+            <Anchor point="TOP">
+              <Offset>
+                <AbsDimension x="12" y="-6" />
+              </Offset>
+            </Anchor>
+          </Anchors>
+        </FontString>
+        <FontString name="DictLogFramePage" inherits="GameFontNormalSmall">
+          <Size>
+            <AbsDimension x="240" y="0"/>
+          </Size>
+          <Anchors>
+            <Anchor point="BOTTOM">
+              <Offset>
+                <AbsDimension x="0" y="10" />
+              </Offset>
+            </Anchor>
+          </Anchors>
+        </FontString>
+      </Layer>
+    </Layers>
+    <Frames>
+      <Button name="DictLogFrameHeader1" inherits="DictLogFrameHeader" text="Word">
+        <Anchors>
+          <Anchor point="TOPLEFT" x="7" y="-57"/>
+        </Anchors>
+        <Scripts>
+          <OnLoad>
+        DictLogFrameColumn_SetWidth(self, 124);
+      </OnLoad>
+        </Scripts>
+      </Button>
+      <Button name="DictLogFrameHeader2" inherits="DictLogFrameHeader" text="Hits">
+        <Anchors>
+          <Anchor point="BOTTOMLEFT" relativeTo="DictLogFrameHeader1" relativePoint="BOTTOMRIGHT" />
+        </Anchors>
+        <Scripts>
+          <OnLoad>
+        DictLogFrameColumn_SetWidth(self, 40);
+      </OnLoad>
+        </Scripts>
+      </Button>
+      <Button name="DictLogFrameHeader3" inherits="DictLogFrameHeader" text="Date">
+        <Anchors>
+          <Anchor point="BOTTOMLEFT" relativeTo="DictLogFrameHeader2" relativePoint="BOTTOMRIGHT" />
+        </Anchors>
+        <Scripts>
+          <OnLoad>
+        DictLogFrameColumn_SetWidth(self, 60);
+      </OnLoad>
+        </Scripts>
+      </Button>
+      <Button name="DictLogButton1" inherits="DictLogButtonTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="DictLogFrame" >
+            <Offset>
+              <AbsDimension x="0" y="-78"/>
+            </Offset>
+          </Anchor>
+        </Anchors>
+      </Button>
+      <Button name="DictLogButton2" inherits="DictLogButtonTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="DictLogButton1" relativePoint="BOTTOMLEFT" />
+        </Anchors>
+      </Button>
+      <Button name="DictLogButton3" inherits="DictLogButtonTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="DictLogButton2" relativePoint="BOTTOMLEFT" />
+        </Anchors>
+      </Button>
+      <Button name="DictLogButton4" inherits="DictLogButtonTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="DictLogButton3" relativePoint="BOTTOMLEFT" />
+        </Anchors>
+      </Button>
+      <Button name="DictLogButton5" inherits="DictLogButtonTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="DictLogButton4" relativePoint="BOTTOMLEFT" />
+        </Anchors>
+      </Button>
+      <Button name="DictLogButton6" inherits="DictLogButtonTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="DictLogButton5" relativePoint="BOTTOMLEFT" />
+        </Anchors>
+      </Button>
+      <Button name="DictLogButton7" inherits="DictLogButtonTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="DictLogButton6" relativePoint="BOTTOMLEFT" />
+        </Anchors>
+      </Button>
+      <Button name="DictLogButton8" inherits="DictLogButtonTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="DictLogButton7" relativePoint="BOTTOMLEFT" />
+        </Anchors>
+      </Button>
+      <Button name="DictLogButton9" inherits="DictLogButtonTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="DictLogButton8" relativePoint="BOTTOMLEFT" />
+        </Anchors>
+      </Button>
+      <Button name="DictLogButton10" inherits="DictLogButtonTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="DictLogButton9" relativePoint="BOTTOMLEFT" />
+        </Anchors>
+      </Button>
+      <Button name="DictLogButton11" inherits="DictLogButtonTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="DictLogButton10" relativePoint="BOTTOMLEFT" />
+        </Anchors>
+      </Button>
+      <Button name="DictLogButton12" inherits="DictLogButtonTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="DictLogButton11" relativePoint="BOTTOMLEFT" />
+        </Anchors>
+      </Button>
+      <Button name="DictLogButton13" inherits="DictLogButtonTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="DictLogButton12" relativePoint="BOTTOMLEFT" />
+        </Anchors>
+      </Button>
+      <Button name="DictLogButton14" inherits="DictLogButtonTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="DictLogButton13" relativePoint="BOTTOMLEFT" />
+        </Anchors>
+      </Button>
+      <Button name="DictLogButton15" inherits="DictLogButtonTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="DictLogButton14" relativePoint="BOTTOMLEFT" />
+        </Anchors>
+      </Button>
+      <Button name="DictLogButton16" inherits="DictLogButtonTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="DictLogButton15" relativePoint="BOTTOMLEFT" />
+        </Anchors>
+      </Button>
+      <Button name="DictLogButton17" inherits="DictLogButtonTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="DictLogButton16" relativePoint="BOTTOMLEFT" />
+        </Anchors>
+      </Button>
+      <Button name="DictLogButton18" inherits="DictLogButtonTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="DictLogButton17" relativePoint="BOTTOMLEFT" />
+        </Anchors>
+      </Button>
+      <Button name="DictLogButton19" inherits="DictLogButtonTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="DictLogButton18" relativePoint="BOTTOMLEFT" />
+        </Anchors>
+      </Button>
+      <Button name="DictLogButton20" inherits="DictLogButtonTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="DictLogButton19" relativePoint="BOTTOMLEFT" />
+        </Anchors>
+      </Button>
+      <Button name="DictLogPrevButton" inherits="UIPanelButtonTemplate" text="Prev">
+        <Size x="85" y="22"/>
+        <Anchors>
+          <Anchor point="BOTTOMLEFT" relativeTo="DictLogFrame" relativePoint="BOTTOMLEFT" x="7" y="4"/>
+        </Anchors>
+        <Scripts>
+          <OnClick>
+            DictLogFrame_onPageChange(false)
+          </OnClick>
+        </Scripts>
+      </Button>
+      <Button name="DictLogNextButton" inherits="UIPanelButtonTemplate" text="Next">
+        <Size x="85" y="22"/>
+        <Anchors>
+          <Anchor point="BOTTOMRIGHT" relativeTo="DictLogFrame" relativePoint="BOTTOMRIGHT" x="-7" y="4"/>
+        </Anchors>
+        <Scripts>
+          <OnClick>
+            DictLogFrame_onPageChange(true)
+          </OnClick>
+        </Scripts>
+      </Button>
+    </Frames>
+  </Frame>
+</Ui>

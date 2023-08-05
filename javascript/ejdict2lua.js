@@ -11,11 +11,12 @@ for (let i = 0; i * CHUNK_SIZE < ejdictData.length; i++) {
         if (j % 1000 === 0) console.log(`Processing ${j} items...`);
 
         const [word, translation] = ejdictData[j].split("\t");
-        output += `["${word.replaceAll('"', '\\"')}"]={["pron"]="",["def"]=[[${translation?.replaceAll(" / ","\n") ?? ""} ]]},\n`;
+        output += `["${word.replaceAll('"', '\\"')}"]={["pron"]="",["def"]=[[${translation?.replaceAll(" / ","\n").replaceAll("・","、")  ?? ""} ]]},\n`;
     }
 
     output += `};\ntable.insert(DictSourceJA, DictSourceJA_part${i});\n`;
 
-    fs.writeFileSync(`../dict.ejdict.part${i}.lua`, output);
+    fs.writeFileSync(`../classic/dict.ejdict.part${i}.lua`, output);
+    fs.writeFileSync(`../retail/dict.ejdict.part${i}.lua`, output);
 }
 

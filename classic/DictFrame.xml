@@ -50,7 +50,7 @@
             </Size>
             <Layers>
               <Layer>
-                <FontString name="DictFramePronounciation" inherits="SsdictFontPron" justifyH="LEFT">
+                <FontString name="DictFramePronounciation" inherits="WowDictFontPron" justifyH="LEFT">
                   <Size>
                     <AbsDimension x="520" y="0"/>
                   </Size>
@@ -67,7 +67,7 @@
                     <AbsDimension x="520" y="0"/>
                   </Size>
                 </FontString>
-                <FontString name="DictFrameSource" inherits="SsdictFontSmall" justifyH="LEFT">
+                <FontString name="DictFrameSource" inherits="WowDictFontSmall" justifyH="LEFT">
                   <Size>
                     <AbsDimension x="520" y="0"/>
                   </Size>

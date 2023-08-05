@@ -6,7 +6,7 @@ tinsert(UISpecialFrames, DictLogFrame:GetName())
 
 DictFrame:RegisterEvent("ADDON_LOADED")
 DictFrame:SetScript("OnEvent", function(self, event, arg1)
-  if event == "ADDON_LOADED" and arg1 == "ssdict" then
+  if event == "ADDON_LOADED" and arg1 == "wowdict" then
     for i = 1, table.getn(DictKeys) do
       local button = CreateFrame("button","DictFrameTab"..i, DictFrame, "DictFrameTabTemplate")
       button:SetID(i)
@@ -28,14 +28,14 @@ DictFrame:SetScript("OnEvent", function(self, event, arg1)
     else 
       PanelTemplates_SetTab(DictFrame, DictFrame_LastSelectedTab);
     end
+
+    if DictLog == nil then
+      DictLog = {}
+    end
   end
 end)
 
 function DictFrame_LookUp(word, shouldLog)
-  if DictLog == nil then
-    DictLog = {}
-  end
-
   DictResult = {}
   local hasResult = false
   for k, v in pairs(DictSource) do

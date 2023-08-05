@@ -1,6 +1,6 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
 ..\FrameXML\UI.xsd">
-  <Frame name="DictLogFrameTemplate" inherits="PortraitFrameTemplate" virtual="true">
+  <Frame name="DictLogFrameTemplate" frameStrata="DIALOG" toplevel="true" inherits="PortraitFrameTemplate" virtual="true">
     <Layers>
       <Layer level="BORDER" textureSubLevel="1">
         <Texture name="$parentBtnCornerLeft" inherits="UI-Frame-BtnCornerLeft">

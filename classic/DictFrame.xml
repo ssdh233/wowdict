@@ -1,0 +1,82 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+  <Button name="DictFrameTabTemplate" inherits="CharacterFrameTabButtonTemplate" virtual="true">
+    <Scripts>
+      <OnClick>
+				PanelTemplates_Tab_OnClick(self, DictFrame);
+        DictFrame_Update();
+			</OnClick>
+    </Scripts>
+  </Button>
+  <Frame name="DictFrame" parent="UIParent" frameStrata="DIALOG" toplevel="true" inherits="BasicFrameTemplateWithInset" hidden="true">
+    <Size>
+      <AbsDimension x="600" y="428"/>
+    </Size>
+    <Anchors>
+      <Anchor point="CENTER" />
+    </Anchors>
+    <Layers>
+      <Layer>
+        <FontString name="DictFrameWord" inherits="GameFontNormal">
+          <Size>
+            <AbsDimension x="460" y="0"/>
+          </Size>
+          <Anchors>
+            <Anchor point="TOP">
+              <Offset>
+                <AbsDimension x="0" y="-6" />
+              </Offset>
+            </Anchor>
+          </Anchors>
+        </FontString>
+      </Layer>
+    </Layers>
+    <Frames>
+      <ScrollFrame name="DictScrollFrame" inherits="UIPanelScrollFrameTemplate">
+        <Size>
+          <AbsDimension x="560" y="388"/>
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="DictFrame">
+            <Offset>
+              <AbsDimension x="0" y="-30" />
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <ScrollChild>
+          <Frame name="DictScrollChildFrame">
+            <Size>
+              <AbsDimension x="540" y="428"/>
+            </Size>
+            <Layers>
+              <Layer>
+                <FontString name="DictFramePronounciation" inherits="SsdictFontPron" justifyH="LEFT">
+                  <Size>
+                    <AbsDimension x="520" y="0"/>
+                  </Size>
+                  <Anchors>
+                    <Anchor point="TOPLEFT">
+                      <Offset>
+                        <AbsDimension x="20" y="-10" />
+                      </Offset>
+                    </Anchor>
+                  </Anchors>
+                </FontString>
+                <FontString name="DictFrameDefinition" inherits="GameFontNormal" justifyH="LEFT">
+                  <Size>
+                    <AbsDimension x="520" y="0"/>
+                  </Size>
+                </FontString>
+                <FontString name="DictFrameSource" inherits="SsdictFontSmall" justifyH="LEFT">
+                  <Size>
+                    <AbsDimension x="520" y="0"/>
+                  </Size>
+                </FontString>
+              </Layer>
+            </Layers>
+          </Frame>
+        </ScrollChild>
+      </ScrollFrame>
+    </Frames>
+  </Frame>
+</Ui>

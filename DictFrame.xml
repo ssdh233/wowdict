@@ -1,5 +1,13 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
 ..\FrameXML\UI.xsd">
+  <Button name="DictFrameTabTemplate" inherits="CharacterFrameTabButtonTemplate" virtual="true">
+    <Scripts>
+      <OnClick>
+				PanelTemplates_Tab_OnClick(self, DictFrame);
+        DictFrame_Update();
+			</OnClick>
+    </Scripts>
+  </Button>
   <Frame name="DictFrame" parent="UIParent" inherits="BasicFrameTemplateWithInset" hidden="true">
     <Size>
       <AbsDimension x="600" y="428"/>
@@ -42,7 +50,7 @@
             </Size>
             <Layers>
               <Layer>
-                <FontString name="DictFramePronounciationEN" inherits="MyFontPron" justifyH="LEFT">
+                <FontString name="DictFramePronounciation" inherits="SsdictFontPron" justifyH="LEFT">
                   <Size>
                     <AbsDimension x="520" y="0"/>
                   </Size>
@@ -54,17 +62,12 @@
                     </Anchor>
                   </Anchors>
                 </FontString>
-                <FontString name="DictFrameDefinitionEN" inherits="GameFontNormal" justifyH="LEFT">
+                <FontString name="DictFrameDefinition" inherits="GameFontNormal" justifyH="LEFT">
                   <Size>
                     <AbsDimension x="520" y="0"/>
                   </Size>
                 </FontString>
-                <FontString name="DictFramePronounciationCN" inherits="MyFontPron" justifyH="LEFT">
-                  <Size>
-                    <AbsDimension x="520" y="0"/>
-                  </Size>
-                </FontString>
-                <FontString name="DictFrameDefinitionCN" inherits="MyFontNormal" justifyH="LEFT">
+                <FontString name="DictFrameSource" inherits="SsdictFontSmall" justifyH="LEFT">
                   <Size>
                     <AbsDimension x="520" y="0"/>
                   </Size>

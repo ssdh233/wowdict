@@ -2,3 +2,4 @@ dict.*.lua
 node_modules
 **/_shared/*
 !**/_shared/description
+fonts

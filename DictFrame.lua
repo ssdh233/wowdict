@@ -1,59 +1,99 @@
+DictResult = {}
+
 -- close frame by esc
 tinsert(UISpecialFrames, DictFrame:GetName())
 tinsert(UISpecialFrames, DictLogFrame:GetName())
 
-function LookUp(msg, shouldLog)
-  if (DictLog == nil) then
+DictFrame:RegisterEvent("ADDON_LOADED")
+DictFrame:SetScript("OnEvent", function(self, event, arg1)
+  if event == "ADDON_LOADED" and arg1 == "ssdict" then
+    for i = 1, table.getn(DictKeys) do
+      local button = CreateFrame("button","DictFrameTab"..i, DictFrame, "DictFrameTabTemplate")
+      button:SetID(i)
+      button:SetText(DictKeys[i])
+      if i == 1 then
+        button:SetPoint("BOTTOMLEFT", -2, -30)
+      else
+        button:SetPoint("BOTTOMLEFT", "DictFrameTab"..(i-1), "BOTTOMRIGHT")
+      end
+      button:SetScript("OnShow", function(self)
+        self:SetWidth(0);
+        PanelTemplates_TabResize(self, i, nil);
+      end)
+    end
+
+    DictFrame.numTabs = table.getn(DictKeys);
+    if DictFrame_LastSelectedTab == nil then
+      PanelTemplates_SetTab(DictFrame, 1);
+    else 
+      PanelTemplates_SetTab(DictFrame, DictFrame_LastSelectedTab);
+    end
+  end
+end)
+
+function DictFrame_LookUp(word, shouldLog)
+  if DictLog == nil then
     DictLog = {}
   end
 
-  if ( DictSourceEN1[msg] or DictSourceEN2[msg] or DictSourceCN1[msg] or DictSourceCN2[msg] ) then
-    if shouldLog then 
-      AddToDictLog(msg)
+  DictResult = {}
+  local hasResult = false
+  for k, v in pairs(DictSource) do
+    if v["data"] then
+      DictResult[k] = nil
+      for i = 1, table.getn(v["data"]) do
+        if (v["data"][i][word]) then
+          DictResult[k] = v["data"][i][word]
+          hasResult = true
+          break
+        end
+      end
     end
-
-    DictScrollFrame:SetVerticalScroll(0);
-    DictFrameWord:SetText(msg);
-
-    if (DictSourceEN1[msg]) then
-      DictFramePronounciationEN:SetText(DictSourceEN1[msg]["pron"]);
-      DictFrameDefinitionEN:SetText(DictSourceEN1[msg]["def"]);
-    elseif (DictSourceEN2[msg]) then
-      DictFramePronounciationEN:SetText(DictSourceEN2[msg]["pron"]);
-      DictFrameDefinitionEN:SetText(DictSourceEN2[msg]["def"]);
-    else 
-      DictFramePronounciationEN:SetText("");
-      DictFrameDefinitionEN:SetText("");
-    end
-
-    if (DictSourceCN1[msg]) then
-      DictFramePronounciationCN:SetText(DictSourceCN1[msg]["pron"]);
-      DictFrameDefinitionCN:SetText(DictSourceCN1[msg]["def"].."\n\n");
-    elseif (DictSourceCN2[msg]) then
-      DictFramePronounciationCN:SetText(DictSourceCN2[msg]["pron"]);
-      DictFrameDefinitionCN:SetText(DictSourceCN2[msg]["def"].."\n\n");
-    else
-      DictFramePronounciationCN:SetText("");
-      DictFrameDefinitionCN:SetText("");
-    end
-    ShowUIPanel(DictFrame)
-    ShowUIPanel(DictScrollChildFrame)
-
-    local enPronHeight = DictFramePronounciationEN:GetStringHeight()
-    DictFrameDefinitionEN:SetPoint("TOPLEFT", 20, -(enPronHeight + 20))
-
-    local enDefHeight = DictFrameDefinitionEN:GetStringHeight()
-    DictFramePronounciationCN:SetPoint("TOPLEFT", 20, -(enPronHeight + 20 + enDefHeight + 100))
-
-    local cnPronHeight = DictFramePronounciationCN:GetStringHeight()
-    DictFrameDefinitionCN:SetPoint("TOPLEFT", 20, -(enPronHeight + 20 + enDefHeight + 100 + cnPronHeight + 20))
   end
+
+  if hasResult then
+    DictFrameWord:SetText(word);
+    if shouldLog then 
+      AddToDictLog(word)
+    end
+    DictFrame_Update()
+  end
+end
+
+function DictFrame_Update()
+  local result;
+
+  local dictKey = DictKeys[DictFrame.selectedTab];
+  DictFrame_LastSelectedTab = DictFrame.selectedTab;
+
+  result = DictResult[dictKey];
+
+  DictScrollFrame:SetVerticalScroll(0);
+
+  if (result) then
+    DictFramePronounciation:SetText(result["pron"]);
+    DictFrameDefinition:SetText(result["def"]);
+    DictFrameSource:SetText(DictSource[dictKey]["source"]);
+  else 
+    DictFramePronounciation:SetText("");
+    DictFrameDefinition:SetText(DictSource[dictKey]["noResultText"]);
+    DictFrameSource:SetText("");
+  end
+
+  ShowUIPanel(DictFrame)
+  ShowUIPanel(DictScrollChildFrame)
+
+  local pronHeight = DictFramePronounciation:GetStringHeight()
+  DictFrameDefinition:SetPoint("TOPLEFT", 20, -(pronHeight + 20))
+
+  local definitionHeight = DictFrameDefinition:GetStringHeight()
+  DictFrameSource:SetPoint("TOPLEFT", 20, -(pronHeight + 20 + definitionHeight + 60))
 end
 
 SLASH_LOOKUP1 = "/d"
 SLASH_LOOKUP2 = "/dict"
 SlashCmdList["LOOKUP"] = function(msg)
-  LookUp(msg, true)
+  DictFrame_LookUp(msg, true);
 end 
 
 function AddToDictLog(msg)

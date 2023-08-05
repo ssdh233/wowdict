@@ -1,8 +1,7 @@
 const fs = require("fs");
 const { XMLParser } = require("fast-xml-parser");
 
-// const dictJson = fs.readFileSync("./_share/en_en_source.dict.sample.json").toString();
-const dictJson = fs.readFileSync("./_share/en_en_source.dict.json").toString();
+const dictJson = fs.readFileSync("./_shared/en_en_source.dict.json").toString();
 const dictData = JSON.parse(dictJson);
 
 const parser = new XMLParser({
@@ -11,39 +10,24 @@ const parser = new XMLParser({
    trimValues: false
 });
 
-const middleNumber = 50000;
+const CHUNK_SIZE = 50000;
 
-let output1 = "DictSourceEN1={";
-for (let i = 0; i < middleNumber; i++) {
-   if (i % 1000 === 0) console.log(`Processing ${i} items...`);
+for (let i = 0; i * CHUNK_SIZE < dictData.length; i++) {
+   let output = `DictSourceEN_part${i}={`;
+   for (let j = i * CHUNK_SIZE; j < Math.min((i + 1) * CHUNK_SIZE, dictData.length); j++) {
+      if (j % 1000 === 0) console.log(`Processing ${j} items...`);
 
-   const { word, definition } = dictData[i];
-   const obj = parser.parse(definition);
-   const result = extract(obj);
-   const { def, pron } = result;
-   output1 += `["${word}"]={["pron"]=[[${pron.replaceAll("\n", " ")}]],["def"]=[[${def}]]},`
+      const { word, definition } = dictData[j];
+      const obj = parser.parse(definition);
+      const result = extract(obj);
+      const { def, pron } = result;
+      output += `["${word}"]={["pron"]=[[${pron.replaceAll("\n", " ")}]],["def"]=[[${def}]]},`
+   }
+
+   output += `};\ntable.insert(DictSourceEN, DictSourceEN_part${i});\n`;
+
+   fs.writeFileSync(`../dict.en.part${i}.lua`, output);
 }
-
-output1 += "}";
-
-// fs.writeFileSync("./_share/dict.sample.lua", output1);
-fs.writeFileSync("./_share/dict.en1.lua", output1);
-
-
-let output2 = "DictSourceEN2={";
-for (let i = middleNumber; i < dictData.length; i++) {
-   if (i % 1000 === 0) console.log(`Processing ${i} items...`);
-
-   const { word, definition } = dictData[i];
-   const obj = parser.parse(definition);
-   const { def, pron } = extract(obj);
-   output2 += `["${word}"]={["pron"]=[[${pron.replaceAll("\n", "")}]],["def"]=[[${def}]]},`
-}
-
-output2 += "}";
-
-// fs.writeFileSync("./_share/dict.sample.lua", output2);
-fs.writeFileSync("./_share/dict.en2.lua", output2);
 
 function extract(node, options = {}) {
    let def = "";

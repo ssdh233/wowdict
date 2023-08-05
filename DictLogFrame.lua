@@ -4,10 +4,10 @@ DictLogFrame_PageSize = 20
 
 SLASH_DICTLOG1 = "/dictlog"
 SlashCmdList["DICTLOG"] = function()
-  if table.getn(DictLogWithoutHole) == 0 then
-    for k, v in pairs(DictLog) do
-      if (v) then table.insert(DictLogWithoutHole, v) end
-    end
+  DictLogWithoutHole = {}
+
+  for k, v in pairs(DictLog) do
+    if (v) then table.insert(DictLogWithoutHole, v) end
   end
 
   if DictLogFrame:IsShown() then
@@ -42,7 +42,7 @@ function DictLogFrame_Update()
       _G["DictLogButton"..j.."Class"]:SetText(month.."/"..day)
 
       _G["DictLogButton"..j]:SetScript("OnClick", function(self)
-        LookUp(DictLogWithoutHole[i][1])
+        DictFrame_LookUp(DictLogWithoutHole[i][1])
       end
       )
 

@@ -8,7 +8,7 @@
 			</OnClick>
     </Scripts>
   </Button>
-  <Frame name="DictFrame" parent="UIParent" inherits="BasicFrameTemplateWithInset" hidden="true">
+  <Frame name="DictFrame" parent="UIParent" frameStrata="DIALOG" toplevel="true" inherits="BasicFrameTemplateWithInset" hidden="true">
     <Size>
       <AbsDimension x="600" y="428"/>
     </Size>

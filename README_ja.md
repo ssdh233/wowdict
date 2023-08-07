@@ -62,6 +62,6 @@ luaにtableが大きすぎるとoverflowになってしまうため、dataはシ
 単語の発音に使うフォントが特殊なので、辞書の発音と意味をpron、defにそれぞれ保存しています。
 defはシンプルな文字列以外、`\n`で改行したり、`|cffffffff`の[color mixin](https://wowpedia.fandom.com/wiki/ColorMixin#Global_Colors)でフォントカラーを変えたりすることができます。
 
-ソースファイルを作成した後、`DictSource`と`DictKey`を更新して、`wowdict.toc`でソースファイルをロードすれば、新しい辞書ソースの追加が閑静です。
+ソースファイルを作成した後、`DictSource`と`DictKey`を更新して、`wowdict.toc`でソースファイルをロードすれば、新しい辞書ソースの追加が完成です。
 
 開発、使用中に問題がありましたら、GitHubのissueで質問してください。

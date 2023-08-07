@@ -1,5 +1,7 @@
 中文 / [日本語](README_ja.md)
 
+[演示动画](https://www.bilibili.com/video/BV1Nu411n7sn)
+
 # wowdict
 
 魔兽世界游戏内词典插件，同时支持正式服，经典服和WLK经典服，提供单词查询和浏览查询记录的功能。

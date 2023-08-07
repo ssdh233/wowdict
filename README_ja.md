@@ -1,5 +1,7 @@
 [中文](README.md) / 日本語
 
+[デモ動画（中国語）](https://www.bilibili.com/video/BV1Nu411n7sn)
+
 # wowdict
 
 World of Warcraftの辞書AddOnです。

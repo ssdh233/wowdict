@@ -9,7 +9,7 @@ World of Warcraftの辞書AddOnです。
 デフォルトでは英和（ejdict-hand）、英中（ECDICT）の辞書ソースが含まれております。プログラミングの知識があればソースの追加が可能です。
 
 ### ダウンロード
-1. https://github.com/ssdh233/wowdict/releases からzipファイルをダウンロード。retailはwowdict_retail_x.x.x.zip、クラシック（WotLK含む）はwowdict_classic_x.x.x.zipをダウンロードしてください。
+1. https://github.com/ssdh233/wowdict/releases からwowdict_x.x.x.zipファイルをダウンロード。
 2. unzip後、wowdictフォルダを適切なバージョンの`\Interface\AddOns`フォルダに移動すればOK。Load out of date AddOnsを選ぶ必要があるかもしれません。
 
 ### 単語を調べる

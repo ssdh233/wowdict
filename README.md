@@ -9,7 +9,7 @@
 默认提供英->中（ECDICT）和英->日（ejdict-hand）两个词典源，支持自定义添加其他词典源，不过需要一些编程能力。
 
 ### 下载 & 安装
-1. 在 https://github.com/ssdh233/wowdict/releases 页面下载最新版本的zip文件。正式服下wowdict_retail_x.x.x.zip，经典服（包括WLK）下wowdict_classic_x.x.x.zip。
+1. 在 https://github.com/ssdh233/wowdict/releases 页面下载最新版本的zip文件（wowdict_x.x.x.zip）。
 2. 解压缩后，将wowdict文件夹移动到对应版本的`\Interface\AddOns`文件夹下，重启游戏即可。可能需要选择"加载过期插件"。
 
 ### 单词查询功能
